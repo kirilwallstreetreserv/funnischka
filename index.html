@@ -3,9 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Emoji Column with Counter</title>
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Montserrat, sans-serif;
+            font-weight: bold;
+            background-color: rgb(206, 179, 179);
+        }
+
+        .counter {
+            font-size: 2em;
+            margin-bottom: 20px;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            margin: 10px;
+            border-radius: 7px;
+            padding: 5px;
+            background-color: antiquewhite;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        }
+
+        .emoji-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 2em;
+        }
+    </style>
 </head>
 <body>
-    
+
+<!-- Элемент счетчика -->
+<div class="counter" id="emojiCounter">Сколько цемок я должен Кицюне: 0</div>
+
+<div class="emoji-column" id="emojiColumn">
+    <!-- Эмодзи будут добавляться сюда -->
+</div>
+
+<script>
+    // Эмодзи, которые будем добавлять
+    const emoji = "💋💋💋";
+
+    // Получаем элементы для эмодзи и счетчика
+    const emojiColumn = document.getElementById("emojiColumn");
+    const emojiCounter = document.getElementById("emojiCounter");
+
+    // Переменная для хранения количества эмодзи
+    let emojiCount = 0;
+
+    // Функция для добавления эмодзи
+    function addEmoji() {
+        for (let i = 0; i < 3; i++) {  // Добавляем 3 эмодзи
+            // Создаем новый элемент <div>
+            const emojiDiv = document.createElement("div");
+
+            // Добавляем в него эмодзи
+            emojiDiv.textContent = emoji;
+
+            // Добавляем элемент в столбик
+            emojiColumn.appendChild(emojiDiv);
+        }
+
+        // Увеличиваем счетчик эмодзи на 3
+        emojiCount += 3;
+
+        // Обновляем текст счетчика
+        emojiCounter.textContent = "Сколько цемок я должен Кицюне: " + emojiCount;
+    }
+
+    // Бесконечный цикл добавления эмодзи каждые 5 секунд
+    setInterval(addEmoji, 2000);
+</script>
+
 </body>
 </html>
